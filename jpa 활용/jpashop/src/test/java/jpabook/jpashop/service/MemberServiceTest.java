@@ -1,9 +1,9 @@
 package jpabook.jpashop.service;
 
 import jpabook.jpashop.domain.Member;
+
+
 import jpabook.jpashop.repository.MemberRepository;
-
-
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ class MemberServiceTest {
         //when
         Long saveId = memberService.join(member);
         //then
-        assertEquals(member, memberRepository.findOne(saveId));
+        assertEquals(member, memberRepository.findById(saveId).get());
     }
 
     @Test
