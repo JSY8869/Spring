@@ -12,6 +12,8 @@ import study.datajpa.dto.MemberDto;
 import study.datajpa.entity.Member;
 import study.datajpa.entity.Team;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,8 @@ public class MemberRepositoryTest {
 
     @Autowired MemberRepository memberRepository;
     @Autowired TeamRepository teamRepository;
+    @PersistenceContext
+    EntityManager em;
 
     @Test
     public void testMember(){
@@ -135,5 +139,58 @@ public class MemberRepositoryTest {
         assertThat(memberDtos.isFirst()).isTrue();
         assertThat(memberDtos.hasNext()).isTrue();
 
+    }
+
+    @Test
+    public void bulkUpdate(){
+        memberRepository.save(new Member("AAA", 10));
+        memberRepository.save(new Member("AAB", 10));
+        memberRepository.save(new Member("AAC", 10));
+        memberRepository.save(new Member("AAD", 10));
+        memberRepository.save(new Member("AAE", 10));
+        memberRepository.save(new Member("AAF", 10));
+
+        int resultCount = memberRepository.bulkAgePlus(5);
+
+        assertThat(resultCount).isEqualTo(6);
+    }
+
+    @Test
+    public void findMemberLazy(){
+        Team teamA = new Team("teamA");
+        teamRepository.save(teamA);
+        Team teamB = new Team("teamB");
+        teamRepository.save(teamB);
+
+        memberRepository.save(new Member("AAA", 10, teamA));
+        memberRepository.save(new Member("AAB", 10, teamB));
+
+        em.flush();
+        em.clear();
+
+        List<Member> members = memberRepository.findAll();
+        for (Member member : members) {
+            System.out.println("member = " + member);
+            System.out.println("member.team = " + member.getTeam().getName());
+        }
+    }
+
+    @Test
+    public void queryHint(){
+        Member aaa = memberRepository.save(new Member("AAA", 10));
+
+        em.flush();
+        em.clear();
+
+        Member member = memberRepository.findReadOnlyByUsername(aaa.getUsername());
+    }
+
+    @Test
+    public void callCustom(){
+        memberRepository.save(new Member("AAA", 10));
+        List<Member> memberCustom = memberRepository.findMemberCustom();
+        for (Member member : memberCustom) {
+            System.out.println("member = " + member);
+        }
     }
 }

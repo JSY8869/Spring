@@ -82,4 +82,18 @@ class MemberJpaRepositoryTest {
         long l = memberJpaRepository.totalCount(10);
         System.out.println("count = "+ l);
     }
+
+    @Test
+    public void bulkUpdate(){
+        memberJpaRepository.save(new Member("AAA", 10));
+        memberJpaRepository.save(new Member("AAB", 10));
+        memberJpaRepository.save(new Member("AAC", 10));
+        memberJpaRepository.save(new Member("AAD", 10));
+        memberJpaRepository.save(new Member("AAE", 10));
+        memberJpaRepository.save(new Member("AAF", 10));
+
+        int resultCount = memberJpaRepository.bulkAgePlus(5);
+
+        assertThat(resultCount).isEqualTo(6);
+    }
 }
