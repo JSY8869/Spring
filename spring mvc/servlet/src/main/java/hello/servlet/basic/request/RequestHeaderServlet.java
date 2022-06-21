@@ -85,5 +85,4 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("--- Header 편의 조회 end ---");
         System.out.println();
     }
-
 }
