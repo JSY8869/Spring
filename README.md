@@ -18,5 +18,7 @@
 ![mvc1](https://user-images.githubusercontent.com/65009713/185064712-cf9dd3c4-cc40-4337-923c-a1197e2fb67a.png)
 ## [스프링 MVC 2편 - 백엔드 웹 개발 활용 기술](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-mvc-2/dashboard)
 ![mvc2](https://user-images.githubusercontent.com/65009713/185064909-28f1a9b7-1646-4207-8540-ede2a11c9b00.png)
+## [스프링 핵심 원리 - 고급편](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%B5%EC%8B%AC-%EC%9B%90%EB%A6%AC-%EA%B3%A0%EA%B8%89%ED%8E%B8/dashboard)
+![advanced](https://user-images.githubusercontent.com/65009713/227468438-4ae4df09-b87f-47d7-a69a-7f300ba9a742.png)
 ## [스프링 DB 1편 - 데이터 접근 핵심 원리](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-db-1/dashboard)
 ![db1](https://user-images.githubusercontent.com/65009713/185064988-e1b3079a-7d9e-4b17-8ceb-4d5d99e05d54.png)
